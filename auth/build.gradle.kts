@@ -44,5 +44,5 @@ dependencies {
     testImplementation(Config.Libs.Provider.facebook)
     testImplementation(Config.Libs.Provider.twitter) { isTransitive = true }
 
-    debugImplementation(project(":internal:lintchecks"))
+//    debugImplementation(project(":internal:lintchecks"))
 }
