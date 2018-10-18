@@ -15,6 +15,7 @@
 package com.firebase.ui.auth;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -26,6 +27,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.StringDef;
 import android.support.annotation.StyleRes;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -35,6 +37,7 @@ import com.firebase.ui.auth.data.remote.TwitterSignInHandler;
 import com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity;
 import com.firebase.ui.auth.util.CredentialUtils;
 import com.firebase.ui.auth.util.ExtraConstants;
+import com.firebase.ui.auth.util.FirebaseAuthError;
 import com.firebase.ui.auth.util.GoogleApiUtils;
 import com.firebase.ui.auth.util.Preconditions;
 import com.firebase.ui.auth.util.data.PhoneNumberUtils;
@@ -1203,5 +1206,16 @@ public final class AuthUI {
                     mEnableHints,
                     mEnableAnonymousUpgrade);
         }
+    }
+
+    public interface DialogCallback {
+        AlertDialog showAlertDialog(@NonNull Context context, String text, @Nullable DialogInterface.OnClickListener
+                onClickListener);
+
+        AlertDialog showAlertErrorDialog(@NonNull Context context, @NonNull FirebaseAuthError error, @Nullable DialogInterface.OnClickListener
+                onClickListener);
+
+        AlertDialog showAlertErrorDialog(@NonNull Context context, @NonNull Throwable exception, @Nullable DialogInterface.OnClickListener
+                onClickListener);
     }
 }

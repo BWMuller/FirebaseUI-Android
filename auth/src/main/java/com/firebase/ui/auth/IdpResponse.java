@@ -14,6 +14,7 @@
 
 package com.firebase.ui.auth;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -297,6 +298,17 @@ public class IdpResponse implements Parcelable {
                 ", mException=" + mException +
                 ", mPendingCredential=" + mPendingCredential +
                 '}';
+    }
+
+    /**
+     * Get the error code for a failed sign in
+     */
+    public int getErrorCode() {
+        if (isSuccessful()) {
+            return Activity.RESULT_OK;
+        } else {
+            return mException.getErrorCode();
+        }
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)

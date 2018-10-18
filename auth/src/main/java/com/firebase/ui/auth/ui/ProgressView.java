@@ -1,5 +1,6 @@
 package com.firebase.ui.auth.ui;
 
+import android.content.Context;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.StringRes;
 
@@ -9,8 +10,12 @@ import android.support.annotation.StringRes;
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 public interface ProgressView {
 
+    void hideProgress();
+
+    void hideProgress(Context context);
+
     void showProgress(@StringRes int message);
 
-    void hideProgress();
+    void showProgress(Context context, @StringRes int message);
 
 }
